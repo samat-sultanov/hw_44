@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stats Page</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+    <h1>History of Current Game</h1>
+
+    {% for game_cnt, game_history in current_game_history.items %}
+    <p>Game Move Number: {{ game_cnt }}</p>
+        <p>{{ game_history }}</p><br>
+    {% endfor %}
+
+    <br><a href="/">Go Back to Game</a>
+</body>
+</html>

@@ -13,6 +13,19 @@ game_history = []
 def game_page(request):
     if request.method == 'GET':
         return render(request, 'input_form.html')
+    else:
+        user_input = {
+            'numbers': request.POST.get('numbers')
+        }
+        if user_input['numbers']:
+            output = guess_numbers(secret_nums, user_input['numbers'].split())
+        else:
+            output = "Error! No input! (Enter 4 unique numbers in range 1 and 9)"
+        context = {
+            'numbers': user_input['numbers'],
+            'message': output
+        }
+        return render(request, 'input_form.html', context)
 
 
 def guess_numbers(secret, actual):

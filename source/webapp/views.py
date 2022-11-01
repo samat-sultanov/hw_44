@@ -48,3 +48,11 @@ def guess_numbers(secret, actual):
             game_history.append(f"Bulls: {bulls_cows[0]}, Cows: {bulls_cows[1]}")
             return f"Bulls: {bulls_cows[0]}, Cows: {bulls_cows[1]}"
     return "A ValueError occurred! (Enter 4 unique numbers in range 1 and 9)"
+
+
+def stats_page(request):
+    current_game_history = {}
+    for game_cnt, message in enumerate(game_history):
+        current_game_history[game_cnt + 1] = message
+    context = {'current_game_history': current_game_history}
+    return render(request, 'stats.html', context)
